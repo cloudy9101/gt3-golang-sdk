@@ -71,6 +71,6 @@ func (s *Service) Validate(challenge, validate, seccode, clientType, ip string, 
 
 	slice = md5.Sum([]byte(seccode))
 	stat = hex.EncodeToString(slice[:]) == res.Seccode
-	stat = stat && (res.ModelProbability == 0)
+	stat = stat && (res.ModelProbability != 1)
 	return
 }
