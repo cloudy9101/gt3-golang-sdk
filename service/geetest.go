@@ -6,10 +6,10 @@ import (
 	"math/rand"
 	"strconv"
 
+	"github.com/cloudy9101/gt3-golang-sdk/conf"
+	"github.com/cloudy9101/gt3-golang-sdk/dao/geetest"
+	mdl "github.com/cloudy9101/gt3-golang-sdk/model/geetest"
 	log "github.com/sirupsen/logrus"
-	"github.com/xingxing/gt3-golang-sdk/conf"
-	"github.com/xingxing/gt3-golang-sdk/dao/geetest"
-	mdl "github.com/xingxing/gt3-golang-sdk/model/geetest"
 )
 
 // Service Geetest

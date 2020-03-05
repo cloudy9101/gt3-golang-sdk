@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/xingxing/gt3-golang-sdk/conf"
-	"github.com/xingxing/gt3-golang-sdk/http"
-	"github.com/xingxing/gt3-golang-sdk/model/geetest"
+	"github.com/cloudy9101/gt3-golang-sdk/conf"
+	"github.com/cloudy9101/gt3-golang-sdk/http"
+	"github.com/cloudy9101/gt3-golang-sdk/model/geetest"
 )
 
 const (
