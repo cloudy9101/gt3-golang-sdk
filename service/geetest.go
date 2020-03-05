@@ -49,7 +49,7 @@ func (s *Service) PreProcess(mid int64, ip, clientType string, newCaptcha int) (
 }
 
 // Validate recheck the challenge code and get to seccode
-func (s *Service) Validate(challenge, validate, seccode, clientType, ip string, success int, mid int64) (stat bool) {
+func (s *Service) Validate(challenge, validate, seccode, clientType, ip string, success int, mid int64, customerURL, customerUA string) (stat bool) {
 	if len(validate) != 32 {
 		return
 	}
@@ -62,7 +62,7 @@ func (s *Service) Validate(challenge, validate, seccode, clientType, ip string, 
 	if hex.EncodeToString(slice[:]) != validate {
 		return
 	}
-	res, err := s.d.Validate(challenge, seccode, clientType, ip, s.c.Secret.CaptchaID, mid)
+	res, err := s.d.Validate(challenge, seccode, clientType, ip, s.c.Secret.CaptchaID, mid, customerURL, customerUA)
 	if err != nil {
 		return
 	}
@@ -71,5 +71,6 @@ func (s *Service) Validate(challenge, validate, seccode, clientType, ip string, 
 
 	slice = md5.Sum([]byte(seccode))
 	stat = hex.EncodeToString(slice[:]) == res.Seccode
+	stat = stat && (res.ModelProbability == 0)
 	return
 }

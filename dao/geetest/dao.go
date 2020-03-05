@@ -61,7 +61,7 @@ func (d *Dao) PreProcess(mid int64, ip, clientType string, newCaptcha int) (chal
 }
 
 // Validate recheck the challenge code and get to seccode
-func (d *Dao) Validate(challenge, seccode, clientType, ip, captchaID string, mid int64) (res *geetest.ValidateRes, err error) {
+func (d *Dao) Validate(challenge, seccode, clientType, ip, captchaID string, mid int64, customerURL, customerUA string) (res *geetest.ValidateRes, err error) {
 	var (
 		bs     []byte
 		params url.Values
@@ -76,6 +76,8 @@ func (d *Dao) Validate(challenge, seccode, clientType, ip, captchaID string, mid
 	params.Set("sdk", "golang_3.0.0")
 	params.Set("user_id", strconv.FormatInt(mid, 10))
 	params.Set("timestamp", strconv.FormatInt(time.Now().Unix(), 10))
+	params.Set("customer_url", customerURL)
+	params.Set("customer_ua", customerUA)
 	if bs, err = d.client.Post(d.validateURI, params); err != nil {
 		return
 	}

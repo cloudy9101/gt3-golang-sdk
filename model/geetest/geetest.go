@@ -8,5 +8,10 @@ type ProcessRes struct {
 }
 
 type ValidateRes struct {
-	Seccode string `json:"seccode"`
+	Seccode          string            `json:"seccode"`
+	ModelProbability int               `json:"model_probability"`
+	Uniformity       bool              `json:"uniformity"`
+	OriginInfo       map[string]string `json:"origin_info"`
+	Duration         float64           `json:"duration"`
+	Test             string            `json:"test"`
 }
